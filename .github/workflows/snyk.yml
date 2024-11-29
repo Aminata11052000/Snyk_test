@@ -1,4 +1,4 @@
-name: Snyk Test de vulnerabilites
+name: Snyk Test de vulnérabilités
 
 on:
   push:
@@ -16,19 +16,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Étape 2 : Installation de Node.js
+      # Étape 2 : Configuration de Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' 
+          node-version: '20'
 
       # Étape 3 : Installation des dépendances
       - name: Install dependencies
         run: npm install
 
-      # Étape 4 : Test des vulnérabilités avec Snyk
+      # Étape 4 : Analyse des vulnérabilités avec Snyk
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions@v1
+        uses: snyk/actions@v0.5.0
         with:
           args: test
         env:
