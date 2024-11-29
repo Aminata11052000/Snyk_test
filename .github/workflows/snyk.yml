@@ -1,0 +1,30 @@
+name: Snyk Test de vulnerabilites
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions@v0.4.0
+        with:
+          args: test
+        env:
+          SNYK_TOKEN: f7070dbe-ac9d-4ee7-b011-e771f707efa7
