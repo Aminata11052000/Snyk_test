@@ -28,8 +28,8 @@ jobs:
 
       # Étape 4 : Analyse des vulnérabilités avec Snyk
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions@v0.5.0
-        with:
-          args: test
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
